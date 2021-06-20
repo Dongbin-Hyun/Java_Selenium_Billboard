@@ -31,9 +31,8 @@ public class Billboard {
 	private String billboardURL = "https://www.billboard.com/";
 	
 	public Billboard() {
-		//super();
 		options = new ChromeOptions();
-		options.addArguments("headless");
+		//options.addArguments("headless");
 		//options.addArguments("--start-maximized");
 		options.addArguments("--disable-popup-blocking");
 		//options.addArguments("--disable-default-apps"); 
@@ -52,7 +51,6 @@ public class Billboard {
 
 		try {
 			driver.get(billboardURL);
-			Thread.sleep(100);
 			driver.findElement(By.xpath("//*[@id=\"main-content\"]/div[2]/div/div/div[2]/div[2]/a")).click();
 			List<WebElement> thisWeekRankElement = driver.findElements(By.className("chart-element__rank__number"));
 			List<WebElement> titleElement = driver.findElements(By.className("chart-element__information__song"));
@@ -69,11 +67,11 @@ public class Billboard {
 				System.out.println("This week : " + thisWeekRankElement.get(i).getAttribute("textContent"));
 				System.out.println("Title : " + titleElement.get(i).getAttribute("textContent"));
 				System.out.println("Singer : " + singerElement.get(i).getAttribute("textContent"));
-				System.out.println("Last Week : " + lastWeekRankElement.get(i).getAttribute("innerText"));
+				System.out.println("Last week : " + lastWeekRankElement.get(i).getAttribute("innerText"));
 				System.out.println("Peak : " + peakRankElement.get(i).getAttribute("innerText"));
 				System.out.println("Weeks on chart : " + weeksOnChartElement.get(i).getAttribute("innerText"));
 				System.out.println("----------------------------------------");
-			}			
+			}						
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
